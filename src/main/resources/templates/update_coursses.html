@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Coursses Management System</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<style>
+	body {
+		background-image: url('https://www.dreamjob.ma/wp-content/uploads/2019/11/UIR-Emploi-Recrutement.jpg');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+	}
+</style>
+<body>
+<div class="container text-center">
+		<h1>Coursses Management System</h1>
+		<hr>
+		<h2>Update Coursse</h2>
+
+		<form action="#" th:action="@{/saveCours}" th:object="${cours}" style="background-color: #ecf0f2;opacity: 0.85; "
+			  method="POST">
+
+			<div class="form-outline mb-4">
+				<label class="col-form-label">Course Name</label>
+				<input type="text" th:field="*{courseName}"
+					   placeholder="Room Number" class="form-control" required>
+			</div>
+
+			<div class="form-outline mb-4">
+				<label class="col-form-label col-sm-4">Professors</label>
+				<div class="form-control">
+					<select th:field="*{prof}" class="form-controll" required>
+						<th:block th:each="prof:${listProfessors}">
+							<option th:text="${prof.getLastName()}" th:value="${prof.getId()}"></option>
+
+						</th:block>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-outline mb-4">
+				<label class="col-form-label col-sm-4">Calssrooms</label>
+
+				<div class="form-control">
+					<select th:field="*{salle}" class="form-controll" required>
+						<th:block th:each="salle:${listSalle}">
+							<option th:text="${salle.getNumber()}" th:value="${salle.getId()}"></option>
+
+						</th:block>
+					</select>
+				</div>
+			</div>
+			<div class="form-outline mb-4">
+				<label class="col-form-label col-sm-4">Groupe</label>
+
+				<div class="form-control">
+					<select th:field="*{groupe}" class="form-controll" required>
+						<th:block th:each="groupe:${listGroupe}">
+							<option th:text="${groupe.getGroupesName()}" th:value="${groupe.getId()}"></option>
+
+						</th:block>
+					</select>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-info col-2"> Save Coursse</button>
+		</form>
+		
+		<hr>
+		
+		<a th:href = "@{/cours}"> Back to Coursses List</a>
+	</div>
+</body>
+</html>

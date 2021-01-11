@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Students Management System</title>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: url('https://www.dreamjob.ma/wp-content/uploads/2019/11/UIR-Emploi-Recrutement.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">WebSiteName</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ><a href="http://localhost:8080/Professor">Professors</a></li>
+            <li><a href="http://localhost:8080/Students">Students</a></li>
+            <li><a href="http://localhost:8080/Salles">Rooms</a></li>
+            <li><a href="http://localhost:8080/cours">Coursses</a></li>
+
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h1>Students List</h1>
+
+    <a th:href = "@{/groupe}" class="btn btn-primary btn-sm mb-3"> Go to Groupes </a>
+
+    <table border="5" class = "table table-striped table-responsive-md" style="background-color: #ecf0f2;opacity: 0.85; ">
+        <thead>
+        <tr>
+            <th>
+                <a >
+                    Student First Name</a>
+            </th>
+            <th>
+                <a >
+                    Student Last Name</a>
+            </th>
+            <th>
+                <a>
+                    Student Email</a>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="groupe : ${listStudents}">
+            <td th:text="${groupe.firstName}"></td>
+            <td th:text="${groupe.lastName}"></td>
+            <td th:text="${groupe.email}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
